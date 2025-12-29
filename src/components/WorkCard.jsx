@@ -1,3 +1,4 @@
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CloudIcon from "@mui/icons-material/Cloud";
 import CodeIcon from "@mui/icons-material/Code";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
@@ -298,6 +299,8 @@ const WorkCard = ({ project, onOpenDialog, onFullscreen, mediaRef }) => {
                     <SmartToyIcon />
                   ) : tech.icon === "cloud" ? (
                     <CloudIcon />
+                  ) : tech.icon === "payment" ? (
+                    <AttachMoneyIcon />
                   ) : null
                 }
                 label={tech.label}
