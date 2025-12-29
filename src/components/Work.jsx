@@ -72,22 +72,23 @@ const Work = () => {
       title: "Run Your Practice",
       status: "public",
       mediaType: "iframe",
-      mediaUrl: "https://run-your-practice.vercel.app/",
+      mediaUrl: "https://run-your-practice.com/",
       allowFullscreen: false,
       techStack: [
-        { icon: "code", label: "React + Vite" },
+        { icon: "code", label: "React (Vite)" },
         { icon: "storage", label: "Supabase" },
         { icon: "smart_toy", label: "Claude API" },
         { icon: "cloud", label: "Vercel" },
         { icon: "code", label: "Tailwind CSS" },
+        { icon: "payment", label: "Stripe" },
       ],
       description:
-        "AI-powered sports practice planning software that helps coaches and teams optimize their training sessions and improve performance.",
+        "Fully functional SAAS. AI-powered sports practice planning software that helps coaches and teams optimize their training sessions and improve performance.",
       showDetails: true,
       actions: [
         {
           label: "Visit Live Site",
-          href: "https://run-your-practice.vercel.app/",
+          href: "https://run-your-practice.com/",
           primary: true,
           external: true,
         },
@@ -99,6 +100,7 @@ const Work = () => {
         "Created user-friendly interface for coaches and team management",
         "Deployed on Vercel for optimal performance and scalability",
         "Integrated modern web technologies for seamless user experience",
+        "Integrated with Stripe, features protected behind paywall",
       ],
     },
     {
