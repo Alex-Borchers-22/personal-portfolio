@@ -50,13 +50,6 @@ const WorkCard = ({ project, onOpenDialog, onFullscreen, mediaRef }) => {
     }
   };
 
-  const handleVideoPause = () => {
-    if (ref && ref.current) {
-      ref.current.pause();
-      setIsVideoPlaying(false);
-    }
-  };
-
   const renderMedia = () => {
     // Don't render media until it's in view (lazy loading)
     if (!isInView) {
