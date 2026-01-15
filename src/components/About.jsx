@@ -7,32 +7,39 @@ import ListItemText from "@mui/material/ListItemText";
 import React from "react";
 import JavaScriptImage from "../assets/img/javascript.png";
 import MySqlImage from "../assets/img/mysql.png";
-import NextJsImage from "../assets/img/nextjs.png";
 import NodeJsImage from "../assets/img/node-js.png";
 import PhpImage from "../assets/img/php.png";
 import PythonImage from "../assets/img/python.jfif";
 import ReactImage from "../assets/img/react-js.png";
 import SqlServerImage from "../assets/img/sql-server.png";
+import SupabaseImage from "../assets/img/supabase.jpg";
+import TypescriptImage from "../assets/img/typescript.png";
 
 const Home = () => {
   const skills = [
     {
       id: "ReactJS_skill",
-      content: "ReactJS / TypeScript",
+      content: "React (Vite) & React Native (Expo)",
       start_date: "2023-10-01",
       image_url: ReactImage,
     },
     {
       id: "NodeJS_skill",
-      content: "ExpressJS",
+      content: "Node (ExpressJS)",
       start_date: "2023-10-01",
       image_url: NodeJsImage,
     },
     {
-      id: "NextJS_skill",
-      content: "NextJS",
+      id: "Typescript_skill",
+      content: "Typescript",
+      start_date: "2023-10-01",
+      image_url: TypescriptImage,
+    },
+    {
+      id: "Supabase_skill",
+      content: "Supabase",
       start_date: "2024-07-01",
-      image_url: NextJsImage,
+      image_url: SupabaseImage,
     },
     {
       id: "JavaScript_skill",
@@ -69,22 +76,22 @@ const Home = () => {
     {
       id: "first-p-about",
       content:
-        "Tech enthusiast with a passion for learning and a love for problem solving. I have a strong background in computer science and software development. I am a self-motivated, hard-working, and goal-oriented individual who is eager to learn and grow.",
+        "Lifelong problem solver with a deep curiosity for how systems work—and how to make them work better. I thrive at the intersection of software architecture, product thinking, and execution, and I enjoy turning ambiguous problems into reliable, scalable solutions.",
     },
     {
       id: "second-p-about",
       content:
-        "Team oriented and collaborative with a strong work ethic. I am a quick learner and a creative thinker who is able to adapt to new environments and situations. I am a strong communicator with excellent interpersonal skills. Leader who has a strong desire to help others.",
+        "A collaborative, team-oriented engineer with a strong ownership mindset. I communicate clearly across technical and non-technical teams, enjoy mentoring others, and take pride in building tools that people actually enjoy using. I value clean design, thoughtful trade-offs, and momentum over perfectionism.",
     },
     {
       id: "third-p-about",
       content:
-        "I am passionate about technology and innovation. I am always looking for ways to improve and optimize processes. I am a problem solver who enjoys finding solutions to complex problems. I am a detail-oriented individual who takes pride in my work and strives for excellence.",
+        "Outside of tech, I’m a lifelong athlete with a deep love for sports—both competing and studying the strategy behind the game. That mindset carries into my work: preparation matters, fundamentals win, and continuous improvement is non-negotiable. I’m also an avid traveler who enjoys exploring new places and perspectives.",
     },
     {
       id: "fourth-p-about",
       content:
-        "Open to new opportunities and challenges. Please feel free to connect with me on LinkedIn or send me an email if you would like to discuss potential opportunities or collaborations.",
+        "When I’m not building or training, I’m spending time with my family and our dog, planning the next trip, or working on side projects that blend technology, sports, and creativity. Always open to meaningful conversations, collaborations, and opportunities that push the needle forward.",
     },
   ];
 

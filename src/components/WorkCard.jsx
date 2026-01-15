@@ -98,6 +98,7 @@ const WorkCard = ({ project, onOpenDialog, onFullscreen, mediaRef }) => {
           <Box sx={{ position: "relative" }}>
             <video
               ref={ref}
+              src={project.mediaUrl}
               style={{
                 width: "100%",
                 height: "250px",
@@ -109,7 +110,6 @@ const WorkCard = ({ project, onOpenDialog, onFullscreen, mediaRef }) => {
               onPause={() => setIsVideoPlaying(false)}
               onEnded={() => setIsVideoPlaying(false)}
             >
-              <source src={project.mediaUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             {!isVideoPlaying && (

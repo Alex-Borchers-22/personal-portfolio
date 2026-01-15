@@ -1,4 +1,5 @@
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Button,
   Dialog,
@@ -10,9 +11,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import fst from "../assets/img/fst.png";
-import reactNativeDemo from "../assets/mp4/react-native-project.mp4";
+import pwReactNative from "../assets/mp4/pw-react-native.mov";
 import viteSupabaseDemo from "../assets/mp4/vite-supabase-example.mp4";
 import mlResearch from "../assets/pdf/Project_Borchers_Masters_Final.pdf";
 import sajfResearch from "../assets/pdf/SAJF Report.pdf";
@@ -37,6 +38,8 @@ const useProjectRefs = (projects) => {
 const Work = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fullscreenMedia, setFullscreenMedia] = useState(null);
 
   const projects = [
     {
@@ -65,6 +68,31 @@ const Work = () => {
         "Flexible setup that allows for administrative customization",
         "PDF rendering for quotes, purchases orders, shipping labels, etc.",
         "API integration with USPS, Avalara Tax, Hubspot, Google Drive, Gmail, & Monday Dev",
+      ],
+    },
+    {
+      id: "pwReactNative",
+      title: "Pierson Wireless Mobile App",
+      status: "internal",
+      mediaType: "video",
+      mediaUrl: pwReactNative,
+      allowFullscreen: true,
+      note: "Due to confidentiality agreements, limited information can be shared about this internal project. All data shown is sample data and not real company data.",
+      techStack: [
+        { icon: "code", label: "React Native" },
+        { icon: "code", label: "Expo" },
+        { icon: "storage", label: "Supabase" },
+        { icon: "code", label: "TypeScript" },
+      ],
+      description:
+        "Mobile application for field technicians and project management. Built with React Native for cross-platform deployment.",
+      showDetails: true,
+      actions: [],
+      contributions: [
+        "Developed cross-platform mobile application using React Native and Expo",
+        "Built real-time data synchronization with SQL Server backend",
+        "Created intuitive UI for on-site project management and tracking",
+        "Implemented secure authentication and role-based access control",
       ],
     },
     {
@@ -162,37 +190,37 @@ const Work = () => {
         "Published as open-source template for developer community",
       ],
     },
-    {
-      id: "crawl",
-      title: "The Crawl",
-      status: "inprogress",
-      mediaType: "video",
-      mediaUrl: reactNativeDemo,
-      allowFullscreen: true,
-      techStack: [
-        { icon: "code", label: "React Native" },
-        { icon: "code", label: "Expo" },
-        { icon: "storage", label: "Supabase" },
-        { icon: "code", label: "Tailwind" },
-      ],
-      description:
-        "A mobile party planning app that helps users organize social events using Google Maps API for real-time location data and route planning.",
-      showDetails: true,
-      actions: [
-        {
-          label: "View on GitHub",
-          href: "https://github.com/Alex-Borchers-22/crawl",
-          primary: true,
-          external: true,
-        },
-      ],
-      contributions: [
-        "Developed a mobile app for planning and organizing social events",
-        "Integrated Google Maps and Places APIs for real-time location data",
-        "Built responsive UI with React Native and Tailwind CSS",
-        "Implemented secure user authentication with Supabase",
-      ],
-    },
+    // {
+    //   id: "crawl",
+    //   title: "The Crawl",
+    //   status: "inprogress",
+    //   mediaType: "video",
+    //   mediaUrl: reactNativeDemo,
+    //   allowFullscreen: true,
+    //   techStack: [
+    //     { icon: "code", label: "React Native" },
+    //     { icon: "code", label: "Expo" },
+    //     { icon: "storage", label: "Supabase" },
+    //     { icon: "code", label: "Tailwind" },
+    //   ],
+    //   description:
+    //     "A mobile party planning app that helps users organize social events using Google Maps API for real-time location data and route planning.",
+    //   showDetails: true,
+    //   actions: [
+    //     {
+    //       label: "View on GitHub",
+    //       href: "https://github.com/Alex-Borchers-22/crawl",
+    //       primary: true,
+    //       external: true,
+    //     },
+    //   ],
+    //   contributions: [
+    //     "Developed a mobile app for planning and organizing social events",
+    //     "Integrated Google Maps and Places APIs for real-time location data",
+    //     "Built responsive UI with React Native and Tailwind CSS",
+    //     "Implemented secure user authentication with Supabase",
+    //   ],
+    // },
     {
       id: "mlResearch",
       title: "Machine Learning Research",
@@ -261,6 +289,22 @@ const Work = () => {
   // Create refs for all projects
   const projectRefs = useProjectRefs(projects);
 
+  // Handle ESC key for fullscreen
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape" && isFullscreen) {
+        handleCloseFullscreen();
+      }
+    };
+
+    if (isFullscreen) {
+      document.addEventListener("keydown", handleEsc);
+      return () => {
+        document.removeEventListener("keydown", handleEsc);
+      };
+    }
+  }, [isFullscreen]);
+
   const handleOpenDialog = (project) => {
     setSelectedProject(project);
     setOpenDialog(true);
@@ -273,78 +317,26 @@ const Work = () => {
 
   const handleFullscreen = (mediaElement) => {
     if (mediaElement) {
-      // Create a wrapper div for fullscreen
-      const wrapper = document.createElement("div");
-      wrapper.style.width = "100vw";
-      wrapper.style.height = "100vh";
-      wrapper.style.backgroundColor = "black";
-      wrapper.style.display = "flex";
-      wrapper.style.alignItems = "center";
-      wrapper.style.justifyContent = "center";
-      wrapper.style.position = "fixed";
-      wrapper.style.top = "0";
-      wrapper.style.left = "0";
-      wrapper.style.zIndex = "9999";
-
-      // Create a clone of the media element
-      const clone = mediaElement.cloneNode(true);
-
-      // Set styles for the cloned element
-      clone.style.width = "auto";
-      clone.style.height = "auto";
-      clone.style.maxWidth = "95vw";
-      clone.style.maxHeight = "95vh";
-      clone.style.objectFit = "contain";
-
-      // For videos, ensure autoplay and controls are enabled
-      if (clone.tagName === "VIDEO") {
-        clone.autoplay = true;
-        clone.controls = true; // Add video controls
-        clone.muted = false; // Unmute the video
-
-        // Ensure the video starts playing
-        clone.addEventListener("loadedmetadata", () => {
-          clone.play().catch((e) => console.log("Playback failed:", e));
+      setFullscreenMedia({
+        element: mediaElement,
+        isVideo: mediaElement.tagName === "VIDEO",
+        src: mediaElement.src,
+      });
+      // Delay setting isFullscreen to trigger animation
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsFullscreen(true);
         });
-      }
-
-      wrapper.appendChild(clone);
-      document.body.appendChild(wrapper);
-
-      // Add close button
-      const closeButton = document.createElement("button");
-      closeButton.innerHTML = "×";
-      closeButton.style.position = "absolute";
-      closeButton.style.top = "20px";
-      closeButton.style.right = "20px";
-      closeButton.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
-      closeButton.style.border = "none";
-      closeButton.style.borderRadius = "50%";
-      closeButton.style.width = "40px";
-      closeButton.style.height = "40px";
-      closeButton.style.fontSize = "24px";
-      closeButton.style.cursor = "pointer";
-      closeButton.style.display = "flex";
-      closeButton.style.alignItems = "center";
-      closeButton.style.justifyContent = "center";
-      closeButton.style.zIndex = "10000";
-
-      closeButton.onclick = () => {
-        document.body.removeChild(wrapper);
-      };
-
-      wrapper.appendChild(closeButton);
-
-      // Handle ESC key
-      const handleEsc = (event) => {
-        if (event.key === "Escape") {
-          closeButton.onclick();
-          document.removeEventListener("keydown", handleEsc);
-        }
-      };
-
-      document.addEventListener("keydown", handleEsc);
+      });
     }
+  };
+
+  const handleCloseFullscreen = () => {
+    setIsFullscreen(false);
+    // Clear the media after animation completes
+    setTimeout(() => {
+      setFullscreenMedia(null);
+    }, 300);
   };
 
   return (
@@ -372,6 +364,97 @@ const Work = () => {
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {fullscreenMedia && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "black",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            opacity: isFullscreen ? 1 : 0,
+            transition: "opacity 0.3s ease-in-out",
+            pointerEvents: isFullscreen ? "auto" : "none",
+          }}
+          onClick={handleCloseFullscreen}
+        >
+          {fullscreenMedia.isVideo ? (
+            <video
+              key={fullscreenMedia.src}
+              src={fullscreenMedia.src}
+              autoPlay
+              controls
+              style={{
+                width: "auto",
+                height: "auto",
+                maxWidth: "95vw",
+                maxHeight: "95vh",
+                objectFit: "contain",
+                transform: isFullscreen ? "scale(1)" : "scale(0.9)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : (
+            <img
+              key={fullscreenMedia.src}
+              src={fullscreenMedia.src}
+              alt="Fullscreen"
+              style={{
+                width: "auto",
+                height: "auto",
+                maxWidth: "95vw",
+                maxHeight: "95vh",
+                objectFit: "contain",
+                transform: isFullscreen ? "scale(1)" : "scale(0.9)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          )}
+
+          <button
+            onClick={handleCloseFullscreen}
+            style={{
+              position: "absolute",
+              top: "20px",
+              right: "20px",
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              cursor: "pointer",
+              padding: 0,
+              margin: 0,
+              marginRight: "20px",
+              zIndex: 10000,
+              transition: "background-color 0.2s ease",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: isFullscreen ? 1 : 0,
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 1)")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.backgroundColor =
+                "rgba(255, 255, 255, 0.8)")
+            }
+          >
+            <CloseIcon style={{ fontSize: "20px", color: "#000" }} />
+          </button>
+        </div>
+      )}
+
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}

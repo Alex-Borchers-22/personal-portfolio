@@ -59,9 +59,9 @@ const Intro = ({ theme }) => {
                   <ReactTyped
                     strings={[
                       "M.S. in Computer Science",
+                      "Founding Engineer",
                       "Senior Software Developer",
                       "Specializing in React, Vite, Express, and SQL",
-                      "Cursor Superpowered Engineer",
                       "Retired Point Guard",
                       "Leader, Team Player, and Problem Solver",
                     ]}
