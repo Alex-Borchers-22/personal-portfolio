@@ -51,9 +51,11 @@ const Work = () => {
       allowFullscreen: true,
       note: "Due to confidentiality agreements, limited information can be shared about this internal project.",
       techStack: [
-        { icon: "code", label: "React.js" },
-        { icon: "code", label: "Express.js" },
+        { icon: "code", label: "React (Vite)" },
+        { icon: "code", label: "TypeScript" },
+        { icon: "code", label: "Node (Express)" },
         { icon: "storage", label: "SQL Server" },
+        { icon: "cloud", label: "Self-Hosted" },
       ],
       description:
         "Enterprise-level financial management and estimation platform serving 100+ employees. Integrates with multiple third-party services and handles complex workflows.",
@@ -79,10 +81,11 @@ const Work = () => {
       allowFullscreen: true,
       note: "Due to confidentiality agreements, limited information can be shared about this internal project. All data shown is sample data and not real company data.",
       techStack: [
-        { icon: "code", label: "React Native" },
-        { icon: "code", label: "Expo" },
-        { icon: "storage", label: "Supabase" },
+        { icon: "code", label: "React Native (Expo)" },
         { icon: "code", label: "TypeScript" },
+        { icon: "code", label: "Node (Express)" },
+        { icon: "storage", label: "SQL Server" },
+        { icon: "cloud", label: "Self-Hosted" },
       ],
       description:
         "Mobile application for field technicians and project management. Built with React Native for cross-platform deployment.",
